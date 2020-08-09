@@ -1,0 +1,48 @@
+1. https://github.com/Ranyaron/linux_work_station
+
+2. Общий буфер обмена: Двунаправленный
+   Тип подключения: Сетевой мост
+
+3. sudo apt update
+   sudo apt install gcc make perl -y
+
+4. sudo apt install vim
+   cd /
+   cd etc/
+   sudo visudo -> Ctrl + O -> Enter -> Ctrl + X
+   
+   cd
+   vim test.txt
+   i (вводим текст: hello) -> Esk -> :wq
+   
+   man cd
+   man ls
+   man sudo
+   man pwd
+   man hostname
+   man whoami
+   man ip a
+   man man
+
+5. sudo apt install openssh-server
+   sudo apt install mc
+   ip a
+   ssh test@192.168.0.105
+   
+   sudo ufw allow from 192.168.0.102 to any port 22
+   sudo ufw enable
+   sudo ufw status
+   
+   генерации ssh ключа:
+      ssh-keygen -t rsa
+      cat ~/.ssh/id_rsa.pub
+   
+   ssh-copy-id test@192.168.0.105
+   
+   отключение доступа по паролю:
+      sudo nano /etc/ssh/sshd_config
+      PermitRootLogin without-password
+  
+   ssh-copy-id test@192.168.0.105
+   ssh test@192.168.0.105
+
