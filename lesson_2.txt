@@ -1,0 +1,48 @@
+1. cat > file_1.txt
+   cat > file_2.txt
+   cat file_1.txt file_2.txt > file.txt
+
+   cat file.txt
+
+   cat file.txt > new_file.txt
+
+2. ls -a ~/ | grep '^\.' | wc -l
+
+3.1 sudo apt install curl
+    curl -O https://raw.githubusercontent.com/mtuktarov/linux_goodies/master/docker/python/uwsgi/flaskapp.py
+
+3.2 ./flaskapp.py
+    chmod 755 ./flaskapp.py
+    ./flaskapp.py
+
+3.3 sudo apt install python2.7
+    python flaskapp.py
+    python3 flaskapp.py
+
+3.4 sudo apt install python3-pip
+    pip3 install flask
+    python3 flaskapp.py
+
+3.5 cat /etc/nsswitch.conf
+    sudo vim /etc/hosts ->
+        192.168.0.104   localhost
+        192.168.0.104   test
+    python3 flaskapp.py
+    curl https://raw.githubusercontent.com/mtuktarov/linux_goodies/master/docker/python/uwsgi/flaskapp.py
+    
+    ssh test@192.168.0.104
+    python3 flaskapp.py
+    curl https://raw.githubusercontent.com/mtuktarov/linux_goodies/master/docker/python/uwsgi/flaskapp.py
+
+3.6 sudo mkdir /opt/bin
+    sudo mv ./flaskapp.py /opt/bin/flaskapp.py
+    sudo mv /opt/bin/flaskapp.py /opt/bin/flaskapp
+    export PATH=/opt/bin:$PATH
+    which flaskapp
+    sudo vim /opt/bin/flaskapp -> #!/usr/bin/python3
+    flaskapp
+    vim ~/.bashrc -> export PATH=/opt/bin:$PATH
+    
+    ssh test@192.168.0.104
+    flaskapp
+    curl https://raw.githubusercontent.com/mtuktarov/linux_goodies/master/docker/python/uwsgi/flaskapp.py
