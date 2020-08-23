@@ -1,0 +1,24 @@
+1. sudo useradd -s /bin/bash -d /home/user1 -m user1
+   sudo useradd -s /bin/bash -d /home/user2 -m user2
+   sudo userdel -r user1
+   sudo useradd -s /bin/bash -d /home/user1 -m user1 -g user2
+   sudo passwd user1
+   sudo usermod -p $(openssl passwd -6 123) user2
+
+2. sudo groupadd group1
+   sudo groupadd group2
+   sudo usermod -aG group1,group2 user1
+   sudo groupadd -g 1516 user1
+   sudo usermod -aG user1 user1
+   sudo usermod -g user1 user1
+   cat /etc/group
+
+3. sudo useradd -s /bin/bash -d /home/super -m super -g sudo
+   sudo passwd super
+   sudo chage super
+
+4. sudo cat /etc/sudoers
+   which useradd
+   which passwd
+   sudo visudo -f /etc/sudoers.d/user1
+   user1	ALL=(ALL:ALL) /usr/sbin/useradd, /usr/bin/passwd
