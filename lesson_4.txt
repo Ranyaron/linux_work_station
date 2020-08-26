@@ -1,0 +1,27 @@
+1. nano
+   ps aux
+   ps aux | grep nano
+   kill -1 1722 - завершение программы с уведомлением (Received SIGHUP or SIGTERM)
+   --/--
+   kill -15 1975 - завершение программы с уведомлением (Received SIGHUP or SIGTERM)
+   --/--
+   kill -11 2008 - нарушение при обращении в память (Sorry! Nano crashed!  Code: 11.  Please report a bug.)
+   --/--
+   kill -4 2055 - недопустимая инструкция процессора (Illegal instruction (core dumped))
+
+2. Нажатие Ctrl + C заставляет терминал послать сигнал SIGINT процессу, который на данный момент его контролирует. Когда foreground-программа получает сигнал SIGINT, она обязана прервать свою работу.
+   Нажатие Ctrl + D говорит терминалу, что надо зарегистрировать так называемый EOF (end of file – конец файла), то есть поток ввода окончен. Bash интерпретирует это как желание выйти из программы.
+   
+   cat > test.txt
+      test1
+      test2
+      test3
+      Ctrl + D -> EOF
+
+3. sudo visudo /etc/ssh/sshd_config
+   PasswordAuthentication no
+   systemctl restart sshd - перезапускает службу
+   
+   sudo visudo /etc/ssh/sshd_config
+   PasswordAuthentication yes
+   systemctl reload sshd - перечитывает конфигурационный файл службы
