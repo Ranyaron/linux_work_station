@@ -1,0 +1,51 @@
+1. sudo touch file1
+   sudo vim file1
+   sudo cp file1 file2
+   sudo ln -s file1 file3
+   sudo ln file1 file4
+   ls -li
+      276193 -rw-r--r-- 2 root root 24 авг 28 18:19 file1
+      264667 -rw-r--r-- 1 root root 24 авг 28 18:21 file2
+      275770 lrwxrwxrwx 1 root root  5 авг 28 18:23 file3 -> file1
+      276193 -rw-r--r-- 2 root root 24 авг 28 18:19 file4
+   sudo rm file1 (символическая ссылка повреждена, жесткая ссылка работает)
+   cat file1 (cat: file1: No such file or directory)
+   cat file2
+   cat file3 (cat: file1: No such file or directory)
+   cat file4
+   sudo rm file*
+
+2. sudo touch file1
+   sudo vim file1
+   sudo ln -s file1 file1_link
+   sudo mv file1_link ../
+   cd ..
+   ls -li
+   не работает, т.к. в символьной ссылке не хранится полный путь до файла file1
+   sudo rm file1_link
+   cd test
+   sudo ln -s $(pwd)/file1 file1_link
+   sudo mv file1_link ../
+   cd ..
+   ls -li
+   работает
+
+3. sudo touch test_3_1 test_3_2
+   sudo chmod ug+rw test_3_1
+   ls -l
+   sudo chmod 664 test_3_1
+   ls -l
+   sudo chmod -rw test_3_2
+   sudo chmod u+rw test_3_2
+   ls -l
+   sudo chmod 600 test_3_2
+   ls -l
+
+4. sudo groupadd developer
+   sudo useradd -s /bin/bash -d /home/developer -m dev_1
+   sudo useradd -s /bin/bash -d /home/developer -m dev_2
+   sudo usermod -G developer dev_1
+   sudo usermod -G developer dev_2
+   cat /etc/group
+   sudo chmod g+s /home/developer
+
