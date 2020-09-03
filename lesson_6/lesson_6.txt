@@ -1,0 +1,10 @@
+1. vim edit.sh - файл скрипта во вложении
+   sudo chmod +x edit.sh
+   ./edit.sh d text.txt
+   ./edit.sh u text.txt
+   ./edit.sh -w d text.txt
+   ./edit.sh -w u text.txt
+
+2. vim dir.sh - файл скрипта во вложении
+   sudo chmod +x dir.sh
+   ./dir.sh ./directory/ file1 file2
