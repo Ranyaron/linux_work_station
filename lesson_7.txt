@@ -1,0 +1,31 @@
+1. apt-add-repository ppa:nginx/stable
+   sudo apt install nginx -y
+   sudo dpkg -r nginx
+
+2. sudo apt install nginx -y
+   sudo vim /etc/nginx/conf.d/host1.conf
+   
+      server {
+         listen    80;
+         server_name    host1;
+
+         location / {
+            return 200 "This is host 1";
+         }
+      }
+
+   cd /etc/nginx/conf.d/
+   sudo vim host2.conf
+   
+      server {
+         listen    80;
+         server_name    host2;
+
+         location / {
+            return 200 "This is host 2";
+         }
+      }
+   
+   sudo systemctl restart nginx
+   curl http://localhost -H 'Host: host1'
+   curl http://localhost -H 'Host: host2'
