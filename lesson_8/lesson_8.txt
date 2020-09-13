@@ -1,0 +1,31 @@
+1. sudo vim /etc/cron.d/lesson_8
+   
+      */15 * * * * root echo "Hi there" | write test /dev/pts/0
+      # &
+      # */15 * * * * root echo "Hi there" > /dev/pts/0
+
+2. mkdir docker_less8
+   cd docker_less8/
+   vim Dockerfile
+   
+      FROM ubuntu
+      RUN apt update
+      RUN apt install python3-pip -y
+      RUN pip3 install django
+      RUN pip3 install pytz
+      RUN mkdir /app
+      ADD mydjangoapp.tar.xz /app/
+      RUN cd /app/mydjangoapp
+      CMD python3 /app/mydjangoapp/manage.py runserver 0.0.0.0:8000
+   
+   docker build . -t less8
+   docker run -ti less8:latest
+   
+      Watching for file changes with StatReloader
+      Performing system checks...
+      
+      System check identified no issues (0 silenced).
+      September 13, 2020 - 15:52:05
+      Django version 3.1.1, using settings 'mydjangoapp.settings'
+      Starting development server at http://0.0.0.0:8000/
+      Quit the server with CONTROL-C.
